@@ -19,6 +19,7 @@ public class Collezione {
     // --------------------------------------------- METODI ---------------------------------------------
 
     // PRIMO METODO:
+    // Aggiungere un elemento
 
     public void aggiungiGioco(Giochi giocoDaAggiungere) {
         boolean duplicato = libreriaDeiGiochi.stream()
@@ -37,18 +38,21 @@ public class Collezione {
     }
 
     // SECONDO METODO:
+    // Ricerca per ID
 
     public Giochi riceraGiocoPerId(int id) {
         return libreriaDeiGiochi.stream().filter(gioco -> gioco.getId() == id).findFirst().orElse(null);
     }
 
-//    TERZO METODO:
+    // TERZO METODO:
+    // Ricerca per prezzo
 
     public List<Giochi> ricercaGiocoPerPrezzo(double prezzo) {
         return libreriaDeiGiochi.stream().filter(giochi -> giochi.getPrezzo() < prezzo).collect(Collectors.toList());
     }
 
-    //    QUARTO METODO:
+    // QUARTO METODO:
+    // Ricerca per numero di giocatori
 
     public List<Giochi> ricercaGiocoPerNumeroGiocatori(int numG) {
         return libreriaDeiGiochi.stream().filter(giochi -> giochi instanceof GiochiDaTavolo)
@@ -57,7 +61,8 @@ public class Collezione {
                 .collect(Collectors.toList());
     }
 
-    //    QUINTO METODO:
+    // QUINTO METODO:
+    // Rimozione di un elemento trovato per ID
 
     public boolean rimuoviGiocoPerId(int id) {
         boolean giocoRimosso = libreriaDeiGiochi.removeIf(gioco -> gioco.getId() == id);
@@ -69,8 +74,21 @@ public class Collezione {
         return giocoRimosso;
     }
 
-    //    SESTO METODO:
+    // SESTO METODO:
+    // Aggiornamento di un elemento esistente trovato per ID
 
+    public boolean modificaGiocoDaZeroById(int id, Giochi nuovoGioco) {
+
+        for (int i = 0; i < libreriaDeiGiochi.size(); i++) {
+            if (libreriaDeiGiochi.get(i).getId() == id) {
+                libreriaDeiGiochi.set(i, nuovoGioco);
+                System.out.println("Gioco modificato correttamente! Questo è il nuovo " + nuovoGioco);
+                return true;
+            }
+        }
+        System.out.println("Gioco non trovato");
+        return false;
+    }
 
     @Override
     public String toString() {

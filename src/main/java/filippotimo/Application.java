@@ -127,6 +127,59 @@ public class Application {
                     libreria.rimuoviGiocoPerId(idDaRimuovere);
                     break;
 
+                case 6:
+                    System.out.print("Inserisci ID del gioco da modificare: ");
+                    int idModifica = Integer.parseInt(scanner.nextLine());
+
+                    System.out.print("Nuovo titolo: ");
+                    String newTitolo = scanner.nextLine();
+
+                    System.out.print("Nuovo anno: ");
+                    int newAnno = Integer.parseInt(scanner.nextLine());
+
+                    System.out.print("Nuovo prezzo: ");
+                    double newPrezzo = Double.parseDouble(scanner.nextLine());
+
+                    System.out.print("Per il tipo scrivi videogioco o gioco da tavolo: ");
+                    String newTipo = scanner.nextLine();
+
+                    if (newTipo.equals("videogioco")) {
+                        System.out.print("Nuova piattaforma: ");
+                        String newPiattaforma = scanner.nextLine();
+
+                        System.out.print("Nuova durata in ore: ");
+                        int newDurata = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Nuovo genere (Azione, Avventura, Rpg, Sport, Fps, Moba, Mmo): ");
+                        // QUA HO COPATO DAL CASE 1
+                        String genereInput = scanner.nextLine();
+                        Genere genere;
+
+                        try {
+                            genere = Genere.valueOf(genereInput);
+                        } catch (IllegalArgumentException e) {
+                            genere = Genere.Azione;
+                        }
+
+                        Videogiochi nuovoVideogioco = new Videogiochi(
+                                idModifica, newTitolo, newAnno, newPrezzo,
+                                newPiattaforma, newDurata, genere
+                        );
+
+                        libreria.modificaGiocoDaZeroById(idModifica, nuovoVideogioco);
+
+                    } else if (newTipo.equals("gioco da tavolo")) {
+                        System.out.print("Nuovo numero di giocatori: ");
+                        int newNumeroGiocatori = Integer.parseInt(scanner.nextLine());
+
+                        GiochiDaTavolo nuovoGiocoDaTavolo = new GiochiDaTavolo(
+                                idModifica, newTitolo, newAnno, newPrezzo, newNumeroGiocatori, newNumeroGiocatori
+                        );
+
+                        libreria.modificaGiocoDaZeroById(idModifica, nuovoGiocoDaTavolo);
+                    }
+                    break;
+
                 default:
                     System.out.println("Il numero selezionato non è valido");
             }

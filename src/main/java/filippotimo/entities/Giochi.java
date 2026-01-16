@@ -11,7 +11,7 @@ public abstract class Giochi {
         this.id = id;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
-        if (prezzo > 0) {
+        if (prezzo != 0) {
             this.prezzo = prezzo;
         } else {
             System.out.println("Il prezzo inserito non è valido, il prezzo del gioco verrà impostato automaticamente a 1");
