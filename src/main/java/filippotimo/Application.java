@@ -12,6 +12,21 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         Collezione libreria = new Collezione();
 
+        Videogiochi primoGioco = new Videogiochi(1, "Mario", 1984, 50.0, "Gamecube", 100, Genere.Azione);
+        Videogiochi secondoGioco = new Videogiochi(2, "Pokemon", 2000, 60.0, "GameBoy color", 120, Genere.Avventura);
+        GiochiDaTavolo terzoGioco = new GiochiDaTavolo(3, "Monopoly", 1985, 25.0, 8, 6);
+        GiochiDaTavolo quartoGioco = new GiochiDaTavolo(4, "Cluedo", 2008, 30.0, 4, 6);
+        Videogiochi quintoGioco = new Videogiochi(5, "Zelda", 2005, 55.0, "Playstation 1", 90, Genere.Avventura);
+
+        libreria.aggiungiGioco(primoGioco);
+        libreria.aggiungiGioco(secondoGioco);
+        libreria.aggiungiGioco(terzoGioco);
+        libreria.aggiungiGioco(quartoGioco);
+        libreria.aggiungiGioco(quintoGioco);
+
+        System.out.println(libreria);
+
+        // questa variabil mi serve pr il ciclo while
         boolean continua = true;
 
         while (continua) {
@@ -22,6 +37,7 @@ public class Application {
                 case 0:
                     System.out.println("Hai scelto di terminare il processo");
                     continua = false;
+                    scanner.close();
                     break;
 
                 case 1:
@@ -36,7 +52,7 @@ public class Application {
                     System.out.print("Anno: ");
                     int anno = Integer.parseInt(scanner.nextLine());
                     System.out.print("Prezzo: ");
-                    double prezzo = Double.parseDouble(scanner.nextLine());
+                    double prezzo = Double.parseDouble(scanner.nextLine()); // QUESTO L'HO TROVATO SU INTERNET
 
                     if (tipo.equals("videogioco")) {
                         System.out.print("Piattaforma: ");
@@ -49,7 +65,7 @@ public class Application {
 
                         try {
                             genere = Genere.valueOf(genereInput);
-                        } catch (IllegalArgumentException e) {
+                        } catch (IllegalArgumentException e) { // QUESTA ECFEZIONE L'HO TROVATA SU INTERNET
                             System.out.println("Genere non valido, imposto Azione di default");
                             genere = Genere.Azione;
                         }
@@ -58,7 +74,7 @@ public class Application {
                         libreria.aggiungiGioco(nuovoVideogioco);
 
                     } else if (tipo.equals("gioco da tavolo")) {
-                        GiochiDaTavolo nuovoGiocoDaTavolo = new GiochiDaTavolo(id, titolo, anno, prezzo, 2, 4);
+                        GiochiDaTavolo nuovoGiocoDaTavolo = new GiochiDaTavolo(id, titolo, anno, prezzo, 2, 2);
                         libreria.aggiungiGioco(nuovoGiocoDaTavolo);
 
                     } else {

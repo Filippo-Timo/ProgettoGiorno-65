@@ -10,16 +10,11 @@ public class Collezione {
     private List<Giochi> libreriaDeiGiochi;
 
 
-    // --------------------------------------------- COSTRUTTORE (in cui inserisco già 5 giochi) ---------------------------------------------
+    // --------------------------------------------- COSTRUTTORE ---------------------------------------------
     public Collezione() {
-        libreriaDeiGiochi = new ArrayList<>();
-
-        libreriaDeiGiochi.add(new Videogiochi(1, "Mario", 1990, 12.0, "NES", 50, Genere.Azione));
-        libreriaDeiGiochi.add(new Videogiochi(2, "Pokemon", 2000, 50.0, "GameBoy", 100, Genere.Avventura));
-        libreriaDeiGiochi.add(new GiochiDaTavolo(3, "Monopoly", 1985, 30.0, 2, 6));
-        libreriaDeiGiochi.add(new Videogiochi(4, "FIFA", 2018, 45.0, "PS4", 120, Genere.Sport));
-        libreriaDeiGiochi.add(new GiochiDaTavolo(5, "Cluedo", 1995, 25.0, 2, 6));
+        libreriaDeiGiochi = new ArrayList<>(); // inizializzo la lista vuota
     }
+
 
     // --------------------------------------------- METODI ---------------------------------------------
 
@@ -72,5 +67,15 @@ public class Collezione {
             System.out.println("Gioco non trovato, riprova inserendo un altro id");
         }
         return giocoRimosso;
+    }
+
+    //    SESTO METODO:
+
+
+    @Override
+    public String toString() {
+        return "Collezione { " +
+                "libreriaDeiGiochi = " + libreriaDeiGiochi +
+                '}';
     }
 }

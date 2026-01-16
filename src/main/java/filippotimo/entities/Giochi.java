@@ -11,7 +11,12 @@ public abstract class Giochi {
         this.id = id;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
-        this.prezzo = prezzo;
+        if (prezzo > 0) {
+            this.prezzo = prezzo;
+        } else {
+            System.out.println("Il prezzo inserito non è valido, il prezzo del gioco verrà impostato automaticamente a 1");
+            this.prezzo = 1;
+        }
     }
 
     public int getId() {
@@ -50,7 +55,7 @@ public abstract class Giochi {
     public String toString() {
         return "Giochi{" +
                 "id = " + id +
-                ", titolo = " + titolo + '\'' +
+                ", titolo = " + titolo +
                 ", annoPubblicazione = " + annoPubblicazione +
                 ", prezzo = " + prezzo +
                 '}';

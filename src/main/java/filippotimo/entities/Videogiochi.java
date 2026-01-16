@@ -9,7 +9,12 @@ public class Videogiochi extends Giochi {
     public Videogiochi(int id, String titolo, int annoPubblicazione, double prezzo, String piattaforma, int durataDiGioco, Genere genere) {
         super(id, titolo, annoPubblicazione, prezzo);
         this.piattaforma = piattaforma;
-        this.durataDiGioco = durataDiGioco;
+        if (durataDiGioco > 0) {
+            this.durataDiGioco = durataDiGioco;
+        } else {
+            System.out.println("Il numero della durata del videogioco inserito non è valido, la durata sarà impostata automaticamente a 1");
+            this.durataDiGioco = 1;
+        }
         this.genere = genere;
     }
 
@@ -39,14 +44,14 @@ public class Videogiochi extends Giochi {
 
     @Override
     public String toString() {
-        return "Videogiochi{" +
-                "id=" + getId() +
-                ", titolo='" + getTitolo() +
-                ", annoPubblicazione=" + getAnnoPubblicazione() +
-                ", prezzo=" + getPrezzo() +
-                ", piattaforma='" + piattaforma +
-                ", durataDiGioco=" + durataDiGioco +
-                ", genere=" + genere +
+        return "Videogioco {" +
+                "id = " + getId() +
+                ", titolo = " + getTitolo() +
+                ", annoPubblicazione = " + getAnnoPubblicazione() +
+                ", prezzo = " + getPrezzo() +
+                ", piattaforma = " + piattaforma +
+                ", durataDiGioco = " + durataDiGioco +
+                ", genere = " + genere +
                 '}';
     }
 }

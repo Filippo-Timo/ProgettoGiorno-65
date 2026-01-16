@@ -7,8 +7,17 @@ public class GiochiDaTavolo extends Giochi {
 
     public GiochiDaTavolo(int id, String titolo, int annoPubblicazione, double prezzo, int numeroDiGiocatori, int durataMediaPartita) {
         super(id, titolo, annoPubblicazione, prezzo);
-        this.numeroDiGiocatori = numeroDiGiocatori;
-        this.durataMediaPartita = durataMediaPartita;
+        if (numeroDiGiocatori != 0 && numeroDiGiocatori >= 1 && numeroDiGiocatori <= 10) {
+            this.numeroDiGiocatori = numeroDiGiocatori;
+        } else {
+            System.out.println("Il numero di giocatori inserito non è valido!");
+        }
+        if (durataMediaPartita > 0) {
+            this.durataMediaPartita = durataMediaPartita;
+        } else {
+            System.out.println("Il numero della durata media della partita inserito non è valido, la durata media sarà impostata automaticamente a 1");
+            this.durataMediaPartita = 1;
+        }
     }
 
     public int getNumeroDiGiocatori() {
@@ -29,9 +38,13 @@ public class GiochiDaTavolo extends Giochi {
 
     @Override
     public String toString() {
-        return "GiochiDaTavolo{" +
-                "numeroDiGiocatori=" + numeroDiGiocatori +
-                ", durataMediaPartita=" + durataMediaPartita +
+        return "Gioco da tavolo {" +
+                "id = " + getId() +
+                ", titolo = " + getTitolo() +
+                ", annoPubblicazione = " + getAnnoPubblicazione() +
+                ", prezzo = " + getPrezzo() +
+                ", numeroDiGiocatori = " + numeroDiGiocatori +
+                ", durataMediaPartita = " + durataMediaPartita +
                 '}';
     }
 }
