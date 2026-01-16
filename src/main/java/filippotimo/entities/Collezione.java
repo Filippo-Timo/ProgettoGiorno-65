@@ -90,6 +90,9 @@ public class Collezione {
         return false;
     }
 
+    // SETTIMO METODO:
+    // Stampa le statistiche della collezione (devo usare IntSummaryStatistics come ha fatto il prof ieri)
+
     @Override
     public String toString() {
         return "Collezione { " +
