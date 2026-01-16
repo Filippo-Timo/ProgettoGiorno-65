@@ -91,7 +91,7 @@ public class Collezione {
     }
 
     // SETTIMO METODO:
-    // Stampa le statistiche della collezione (devo usare IntSummaryStatistics come ha fatto il prof ieri)
+    // Stampa le statistiche della collezione (devo usare .summaryStatistics() come ha fatto il prof ieri)
 
     @Override
     public String toString() {
