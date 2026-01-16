@@ -64,7 +64,7 @@ public class Application {
                         Genere genere;
 
                         try {
-                            genere = Genere.valueOf(genereInput);
+                            genere = Genere.valueOf(genereInput); // con il valeOf trasgormo la stringa mella variabile genereInput in un elemento dell'enum (l'ho trovato su internet)
                         } catch (IllegalArgumentException e) { // QUESTA ECFEZIONE L'HO TROVATA SU INTERNET
                             System.out.println("Genere non valido, imposto Azione di default");
                             genere = Genere.Azione;
@@ -78,7 +78,7 @@ public class Application {
                         libreria.aggiungiGioco(nuovoGiocoDaTavolo);
 
                     } else {
-                        System.out.println("Tipo non valido!");
+                        System.out.println("Il tipo inserito non è valido!");
                     }
                     for (Giochi gioco : libreria.getLibreriaDeiGiochi()) {
                         System.out.println(gioco);
@@ -92,18 +92,18 @@ public class Application {
                     if (giocoTrovato != null) {
                         System.out.println("Gioco trovato: " + giocoTrovato);
                     } else {
-                        System.out.println("Nessun gioco trovato con ID " + idCercato);
+                        System.out.println("Non ho trovato un gioco con ID " + idCercato);
                     }
                     break;
 
                 case 3:
-                    System.out.print("Mostra giochi con prezzo inferiore a: ");
+                    System.out.print("Questi sono i giochi con il prezzo inferiore a: ");
                     double prezzoLimite = Double.parseDouble(scanner.nextLine());
                     List<Giochi> giochiEconomici = libreria.ricercaGiocoPerPrezzo(prezzoLimite);
                     if (!giochiEconomici.isEmpty()) {
                         giochiEconomici.forEach(System.out::println);
                     } else {
-                        System.out.println("Nessun gioco trovato sotto il prezzo " + prezzoLimite);
+                        System.out.println("Nessun gioco trovato al di sotto il prezzo " + prezzoLimite);
                     }
                     break;
 
@@ -152,11 +152,11 @@ public class Application {
 
                         System.out.print("Nuovo genere (Azione, Avventura, Rpg, Sport, Fps, Moba, Mmo): ");
                         // QUA HO COPATO DAL CASE 1
-                        String genereInput = scanner.nextLine();
+                        String newGenereInput = scanner.nextLine();
                         Genere genere;
 
                         try {
-                            genere = Genere.valueOf(genereInput);
+                            genere = Genere.valueOf(newGenereInput); // con il valeOf trasgormo la stringa mella variabile newGenereInput in un elemento dell'enum (l'ho trovato su internet)
                         } catch (IllegalArgumentException e) {
                             genere = Genere.Azione;
                         }
